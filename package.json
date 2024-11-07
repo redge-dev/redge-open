@@ -7,7 +7,7 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ci:version": "changeset version && yarn install",
-    "ci:publish": "yarn publish -r && changeset tag"
+    "ci:publish": "changeset tag"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
