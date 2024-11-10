@@ -1,5 +1,5 @@
 {
-  "name": "@redge/fs",
+  "name": "@redge-dev/fs",
   "version": "1.0.1",
   "type": "module",
   "exports": {
