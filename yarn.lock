@@ -931,6 +931,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redge-dev/frameworks@workspace:packages/frameworks":
+  version: 0.0.0-use.local
+  resolution: "@redge-dev/frameworks@workspace:packages/frameworks"
+  dependencies:
+    "@eslint/js": "npm:^9.14.0"
+    "@redge/eslint-config": "npm:*"
+    "@redge/typescript-config": "npm:*"
+    "@rsbuild/plugin-react": "npm:^1.0.6"
+    "@rslib/core": "npm:^0.0.16"
+    "@types/react": "npm:^18.3.12"
+    globals: "npm:^15.11.0"
+    prettier: "npm:^3.3.3"
+    react: "npm:^18.3.1"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
+
+"@redge-dev/fs@workspace:packages/fs":
+  version: 0.0.0-use.local
+  resolution: "@redge-dev/fs@workspace:packages/fs"
+  dependencies:
+    "@eslint/js": "npm:^9.14.0"
+    "@redge/eslint-config": "npm:*"
+    "@redge/typescript-config": "npm:*"
+    "@rsbuild/plugin-react": "npm:^1.0.6"
+    "@rslib/core": "npm:^0.0.16"
+    "@types/react": "npm:^18.3.12"
+    globals: "npm:^15.11.0"
+    prettier: "npm:^3.3.3"
+    react: "npm:^18.3.1"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
+
 "@redge/eslint-config@npm:*, @redge/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@redge/eslint-config@workspace:packages/eslint-config"
@@ -949,41 +983,6 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.2"
     typescript: "npm:^5.6.3"
     typescript-eslint: "npm:^8.13.0"
-  languageName: unknown
-  linkType: soft
-
-"@redge/frameworks@npm:*, @redge/frameworks@workspace:packages/frameworks":
-  version: 0.0.0-use.local
-  resolution: "@redge/frameworks@workspace:packages/frameworks"
-  dependencies:
-    "@eslint/js": "npm:^9.14.0"
-    "@redge/eslint-config": "npm:*"
-    "@redge/typescript-config": "npm:*"
-    "@rsbuild/plugin-react": "npm:^1.0.6"
-    "@rslib/core": "npm:^0.0.16"
-    "@types/react": "npm:^18.3.12"
-    globals: "npm:^15.11.0"
-    prettier: "npm:^3.3.3"
-    react: "npm:^18.3.1"
-    typescript: "npm:^5.6.3"
-  languageName: unknown
-  linkType: soft
-
-"@redge/fs@workspace:packages/fs":
-  version: 0.0.0-use.local
-  resolution: "@redge/fs@workspace:packages/fs"
-  dependencies:
-    "@eslint/js": "npm:^9.14.0"
-    "@redge/eslint-config": "npm:*"
-    "@redge/frameworks": "npm:*"
-    "@redge/typescript-config": "npm:*"
-    "@rsbuild/plugin-react": "npm:^1.0.6"
-    "@rslib/core": "npm:^0.0.16"
-    "@types/react": "npm:^18.3.12"
-    globals: "npm:^15.11.0"
-    prettier: "npm:^3.3.3"
-    react: "npm:^18.3.1"
-    typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
 
