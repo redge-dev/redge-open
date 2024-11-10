@@ -1,0 +1,25 @@
+import { GithubFilesystem } from './github-filesystem';
+
+describe('GithubFilesystem', () => {
+  it('Should be able to read dir', async () => {
+    const fs = new GithubFilesystem({
+      token: process.env.GITHUB_TOKEN!,
+      ref: 'master',
+    });
+
+    const files = await fs.readDir('./packages/frameworks');
+    const readme = files.find((file) => file.name === 'README.md');
+    expect(readme).toBeDefined();
+  });
+
+  it("Should throw error if an directory doesn't exist", async () => {
+    const fs = new GithubFilesystem({
+      token: process.env.GITHUB_TOKEN!,
+      ref: 'master',
+    });
+
+    await expect(fs.readDir('./packages/random')).rejects.toThrow(
+      'No directory found with the name random',
+    );
+  });
+});
