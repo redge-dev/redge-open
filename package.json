@@ -8,7 +8,7 @@
     "test": "turbo test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ci:version": "changeset version && yarn install",
-    "ci:publish": "changeset tag"
+    "ci:publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
