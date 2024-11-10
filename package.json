@@ -5,6 +5,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "test": "turbo test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ci:version": "changeset version && yarn install",
     "ci:publish": "changeset tag"
@@ -13,7 +14,9 @@
     "@changesets/cli": "^2.27.9",
     "prettier": "^3.2.5",
     "turbo": "^2.2.3",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
   },
   "engines": {
     "node": ">=18"

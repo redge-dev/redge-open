@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GithubFilesystem > Should be able to read file 1`] = `
+"# Rslib Project
+
+## Setup
+
+Install the dependencies:
+
+\`\`\`bash
+pnpm install
+\`\`\`
+
+## Get Started
+
+Build the library:
+
+\`\`\`bash
+pnpm build
+\`\`\`
+
+Build the library in watch mode:
+
+\`\`\`bash
+pnpm dev
+\`\`\`
+"
+`;
