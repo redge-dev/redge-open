@@ -14,8 +14,13 @@ type GithubTreeNode = {
 type GithubTreeResponse = {
   tree: GithubTreeNode[];
 };
+type GithubBlobResponse = {
+  sha: string;
+  content: string;
+  encoding: BufferEncoding;
+};
 
-export type GithubFilesystemStat = FileSystemStat<GithubTreeNode>;
+export type GithubFilesystemStat = FileSystemStat<{ sha: string }>;
 
 export type GithubFilesystemProps = {
   /**
@@ -73,6 +78,20 @@ export class GithubFilesystem extends BaseFilesystem<GithubFilesystemStat> {
       return result.json();
     } catch (err) {
       console.error(`Failed to request to ${input}.`);
+      console.error(err);
+      throw err;
+    }
+  }
+
+  protected async _readFile(sha: string): Promise<Buffer> {
+    try {
+      const { content, encoding } = await this.makeRequest<GithubBlobResponse>(
+        `https://api.github.com/repos/redge-dev/redge-open/git/blobs/${sha}`,
+      );
+
+      return Buffer.from(content, encoding);
+    } catch (err) {
+      console.error(`Failed to read file with sha: ${sha}`);
       console.error(err);
       throw err;
     }
@@ -156,5 +175,35 @@ export class GithubFilesystem extends BaseFilesystem<GithubFilesystemStat> {
     }
 
     return result;
+  }
+
+  public async readFile(filename: string): Promise<Buffer> {
+    const normalized = this.normalizePath(filename);
+
+    const c = this.readFileCache.get(normalized);
+    if (c) {
+      return c;
+    }
+
+    const entries = this.getEntriesFromPath(filename);
+    const name = normalized.split('/').at(-1);
+    const fileDir = entries.at(-2);
+
+    if (!name || !fileDir) {
+      throw new Error(
+        `Failed to read the file ${name} at directory ${fileDir}`,
+      );
+    }
+
+    const dir = await this.readDir(fileDir);
+    const fileStat = await dir.find((file) => file.name === name);
+    if (!fileStat) {
+      throw new Error(`File ${name} not found in directory ${fileDir}`);
+    }
+
+    const p = this._readFile(fileStat.metadata.sha);
+    this.readFileCache.set(normalized, p);
+
+    return p;
   }
 }

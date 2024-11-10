@@ -26,7 +26,6 @@ export abstract class BaseFilesystem<
 > {
   protected abstract _readDir(name: string): Promise<F[]>;
   protected abstract _readFile(name: string): Promise<Buffer>;
-  protected abstract _isFile(name: string): Promise<boolean>;
 
   protected readDirCache: Map<string, Promise<F[]>>;
   protected readFileCache: Map<string, Promise<Buffer>>;
@@ -39,17 +38,6 @@ export abstract class BaseFilesystem<
 
     this.readFile = this.readFile.bind(this);
     this.readDir = this.readDir.bind(this);
-    this.isFile = this.isFile.bind(this);
-  }
-
-  public async isFile(name: string): Promise<boolean> {
-    let c = this.fileCache.get(name);
-    if (!c) {
-      c = this._isFile(name);
-      this.fileCache.set(name, c);
-    }
-
-    return c;
   }
 
   /**

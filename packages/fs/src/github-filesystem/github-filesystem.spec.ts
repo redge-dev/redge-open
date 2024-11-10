@@ -22,4 +22,27 @@ describe('GithubFilesystem', () => {
       'No directory found with the name random',
     );
   });
+
+  it('Should be able to read file', async () => {
+    const fs = new GithubFilesystem({
+      token: process.env.GITHUB_TOKEN!,
+      ref: 'master',
+    });
+
+    const file = await fs.readFile('./packages/frameworks/README.md');
+    expect(file.toString()).toMatchSnapshot();
+  });
+
+  it('Should throw error when file is read failed', async () => {
+    const fs = new GithubFilesystem({
+      token: process.env.GITHUB_TOKEN!,
+      ref: 'master',
+    });
+
+    await expect(
+      fs.readFile('./packages/frameworks/EMDAER.md'),
+    ).rejects.toThrow(
+      'File EMDAER.md not found in directory packages/frameworks',
+    );
+  });
 });
