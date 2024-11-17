@@ -1,0 +1,4 @@
+{
+  "root": true,
+  "extends": ["@redge/eslint-config/cli.cjs"],
+}
