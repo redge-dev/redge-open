@@ -1,6 +1,8 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import path from 'node:path'
+import { cwd } from 'node:process';
 
 /*
  * This is a custom ESLint configuration for use with
@@ -8,12 +10,12 @@ import eslintConfigPrettier from 'eslint-config-prettier';
  */
 export default tseslint.config(
   eslint.configs.recommended,
+  eslintConfigPrettier,
   ...tseslint.configs.strict,
-  ...eslintConfigPrettier,
   {
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+        project: [path.join(cwd(), '../../', './packages/*/tsconfig.json')],
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -23,4 +25,4 @@ export default tseslint.config(
       'dist'
     ]
   }
-);
+)

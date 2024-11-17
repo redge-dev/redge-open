@@ -8,7 +8,9 @@
     "test": "turbo test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ci:version": "changeset version && yarn install",
-    "ci:publish": "changeset publish"
+    "ci:publish": "changeset publish",
+    "@comment cli": "Shorthand to run npm script in the CLI repo",
+    "cli": "yarn workspace @redge-dev/cli"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
